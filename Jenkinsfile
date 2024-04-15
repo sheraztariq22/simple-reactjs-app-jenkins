@@ -17,7 +17,7 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 script {
-                    dockerImage = docker.build("my-react-app:latest")
+                    def dockerImage = docker.build("my-react-app:latest")
                 }
             }
         }
