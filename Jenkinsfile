@@ -25,7 +25,7 @@ pipeline {
         stage('Run Docker Image') {
             steps {
                 script {
-                    dockerImage.inside {
+                    docker.image(dockerImage).inside {
                         sh 'npm start'
                     }
                 }
@@ -36,7 +36,7 @@ pipeline {
             steps {
                 script {
                     docker.withRegistry('https://registry.hub.docker.com', 'my-docker-hub-credentials') {
-                        dockerImage.push()
+                        docker.image(dockerImage).push()
                     }
                 }
             }
